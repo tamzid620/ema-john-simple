@@ -32,11 +32,9 @@ const Shop = () => {
 // step -5 : set the cart -----------------
         setCart(savedCart);
     },[products])
-
+    
     const handleAddToCart = (product)=> {
-        // cart.push(product)
         let newCart = [];
-        // const newCart = [...cart, product];
         const exists = cart.find(pd => pd.id === product.id);
         if(!exists){
             product.quantity = 1;
@@ -46,7 +44,6 @@ const Shop = () => {
             const remaining = cart.filter(pd => pd.id !== product.id);
             newCart = [...remaining, exists]
         }
-
         setCart(newCart);
         addToDb(product.id);
     }
